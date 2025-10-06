@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.38.5.1644",
-      "templateHash": "18285064328957179957"
+      "templateHash": "15444600444864788398"
     }
   },
   "parameters": {
@@ -25,14 +25,14 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "West Europe",
+      "defaultValue": "Poland Central",
       "metadata": {
         "description": "Location for all resources"
       }
     },
     "sku": {
       "type": "string",
-      "defaultValue": "S1",
+      "defaultValue": "F1",
       "allowedValues": [
         "F1",
         "B1",

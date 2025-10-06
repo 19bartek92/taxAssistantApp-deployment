@@ -38,10 +38,10 @@ Fill in the deployment form with your settings:
 |-----------|-------------|---------|----------|
 | **Subscription** | Your Azure subscription | `My Company Subscription` | ✅ |
 | **Resource Group** | Create new or use existing | `rg-taxassistant` | ✅ |
-| **Region** | Azure region for deployment | `West Europe` | ✅ |
+| **Region** | Azure region for deployment | `Poland Central` | ✅ |
 | **App Service Plan Name** | Name for hosting plan | `taxassistant-plan` | ✅ |
 | **Web App Name** | Name for your application | `taxassistant-mycompany` | ✅ |
-| **SKU** | Hosting plan size | `S1` (recommended) | ✅ |
+| **SKU** | Hosting plan size | `F1` (Free tier) | ✅ |
 | **NSA Search API Key** | Your API key for search | `your-search-key-here` | ✅ |
 | **NSA Detail API Key** | Your API key for details | `your-detail-key-here` | ✅ |
 | **Key Vault Name** | Name for secure storage | `kv-taxassistant` | ✅ |
@@ -145,7 +145,7 @@ https://[your-web-app-name].azurewebsites.net
 A: Key Vault names must be globally unique. Try a different name or let the system generate one.
 
 **Q: Can't download publish profile**
-A: Make sure you're using S1 or higher SKU. F1 (Free) tier doesn't support publish profiles.
+A: F1 (Free) tier has limited publish options. You can still deploy using Visual Studio Code with Azure extension or Azure CLI with deployment center.
 
 **Q: App shows error after deployment**
 A: The infrastructure is created, but the application code needs to be deployed by the developer.
@@ -170,10 +170,12 @@ If you encounter issues:
 
 ## 💰 Cost Estimation
 
-Estimated monthly cost for S1 plan in West Europe:
-- **App Service Plan (S1)**: ~€55/month
+Estimated monthly cost for F1 plan in Poland Central:
+- **App Service Plan (F1)**: FREE (with limitations)
 - **Key Vault**: ~€0.50/month (for secret operations)
-- **Total**: ~€55.50/month
+- **Total**: ~€0.50/month
+
+*F1 limitations: 60 minutes compute time per day, 1GB disk space, no custom domains*
 
 *Note: Costs may vary by region and usage. Check Azure pricing calculator for accurate estimates.*
 

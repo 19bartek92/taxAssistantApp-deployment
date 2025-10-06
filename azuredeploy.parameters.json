@@ -9,10 +9,10 @@
       "value": "taxassistant-webapp"
     },
     "location": {
-      "value": "West Europe"
+      "value": "Poland Central"
     },
     "sku": {
-      "value": "S1"
+      "value": "F1"
     },
     "nsaSearchApiKey": {
       "value": "your-nsa-search-api-key-here"

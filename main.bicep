@@ -5,7 +5,7 @@ param appServicePlanName string = 'taxassistant-plan'
 param webAppName string = 'taxassistant-${uniqueString(resourceGroup().id)}'
 
 @description('Location for all resources')
-param location string = 'West Europe'
+param location string = 'Poland Central'
 
 @description('SKU for App Service Plan')
 @allowed([
@@ -17,7 +17,7 @@ param location string = 'West Europe'
   'P1v3'
   'P2v3'
 ])
-param sku string = 'S1'
+param sku string = 'F1'
 
 @description('NSA Search API Key')
 @secure()
