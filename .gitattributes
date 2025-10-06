@@ -1,0 +1,2 @@
+*.json text eol=lf
+azuredeploy.json text eol=lf
