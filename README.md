@@ -1,188 +1,188 @@
-# 🚀 TaxAssistantApp - Simplified Deployment
+# 🚀 TaxAssistantApp - Uproszczone Wdrożenie
 
-Deploy the TaxAssistantApp to your Azure subscription with a simple one-click process. This deployment creates only the necessary infrastructure (App Service + Key Vault) without complex integrations.
+Wdróż aplikację TaxAssistantApp w swojej subskrypcji Azure za pomocą prostego procesu jednym kliknięciem. To wdrożenie tworzy tylko niezbędną infrastrukturę (App Service + Key Vault) bez skomplikowanych integracji.
 
-## ✨ What gets deployed
+## ✨ Co zostanie wdrożone
 
-- **Azure App Service** - Hosts your web application
-- **Azure Key Vault** - Securely stores your API keys
-- **Managed Identity** - Allows the app to access Key Vault securely
+- **Azure App Service** - Hostuje twoją aplikację webową
+- **Azure Key Vault** - Bezpiecznie przechowuje klucze API
+- **Managed Identity** - Umożliwia aplikacji bezpieczny dostęp do Key Vault
 
-## 📋 Prerequisites
+## 📋 Wymagania wstępne
 
-Before deploying, you'll need:
+Przed wdrożeniem będziesz potrzebować:
 
-1. **Azure Subscription** - With permissions to create resources
-2. **NSA Search API Key** - For tax interpretation search functionality
-3. **NSA Detail API Key** - For detailed interpretation retrieval
+1. **Subskrypcję Azure** - Z uprawnieniami do tworzenia zasobów
+2. **Klucz API NSA Search** - Do funkcji wyszukiwania interpretacji podatkowych
+3. **Klucz API NSA Detail** - Do pobierania szczegółowych interpretacji
 
-## 🎯 Deployment Process
+## 🎯 Proces Wdrożenia
 
-### Step 1: Click Deploy to Azure
+### Krok 1: Kliknij Deploy to Azure
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2F19bartek92%2FtaxAssistantApp-deployment%2Fmain%2Fazuredeploy.json)
 
-*[Screenshot placeholder: Azure deploy button]*
+*[Placeholder zrzutu ekranu: Przycisk Deploy to Azure]*
 
-### Step 2: Login to Azure
+### Krok 2: Zaloguj się do Azure
 
-You'll be redirected to Azure Portal to authenticate with your Azure account.
+Zostaniesz przekierowany do Azure Portal, aby uwierzytelnić się swoim kontem Azure.
 
-*[Screenshot placeholder: Azure login screen]*
+*[Placeholder zrzutu ekranu: Ekran logowania Azure]*
 
-### Step 3: Configure Deployment Parameters
+### Krok 3: Skonfiguruj Parametry Wdrożenia
 
-Fill in the deployment form with your settings:
+Wypełnij formularz wdrożenia swoimi ustawieniami:
 
-| Parameter | Description | Example | Required |
-|-----------|-------------|---------|----------|
-| **Subscription** | Your Azure subscription | `My Company Subscription` | ✅ |
-| **Resource Group** | Create new or use existing | `rg-taxassistant` | ✅ |
-| **Region** | Azure region for deployment | `Poland Central` | ✅ |
-| **App Service Plan Name** | Name for hosting plan | `taxassistant-plan` | ✅ |
-| **Web App Name** | Name for your application | `taxassistant-mycompany` | ✅ |
-| **SKU** | Hosting plan size | `F1` (Free tier) | ✅ |
-| **NSA Search API Key** | Your API key for search | `your-search-key-here` | ✅ |
-| **NSA Detail API Key** | Your API key for details | `your-detail-key-here` | ✅ |
-| **Key Vault Name** | Name for secure storage | `kv-taxassistant` | ✅ |
+| Parametr | Opis | Przykład | Wymagane |
+|----------|-----|----------|----------|
+| **Subscription** | Twoja subskrypcja Azure | `Moja Subskrypcja Firmowa` | ✅ |
+| **Resource Group** | Utwórz nową lub użyj istniejącej | `rg-taxassistant` | ✅ |
+| **Region** | Region Azure do wdrożenia | `Poland Central` | ✅ |
+| **App Service Plan Name** | Nazwa planu hostingowego | `taxassistant-plan` | ✅ |
+| **Web App Name** | Nazwa twojej aplikacji | `taxassistant-mojafirma` | ✅ |
+| **SKU** | Rozmiar planu hostingowego | `F1` (warstwa darmowa) | ✅ |
+| **NSA Search API Key** | Twój klucz API do wyszukiwania | `twoj-klucz-search-tutaj` | ✅ |
+| **NSA Detail API Key** | Twój klucz API do szczegółów | `twoj-klucz-detail-tutaj` | ✅ |
+| **Key Vault Name** | Nazwa dla bezpiecznego magazynu | `kv-taxassistant` | ✅ |
 
-*[Screenshot placeholder: Azure deployment form with filled parameters]*
+*[Placeholder zrzutu ekranu: Formularz wdrożenia z wypełnionymi parametrami]*
 
-### Step 4: Review and Create
+### Krok 4: Przejrzyj i Utwórz
 
-1. Check "I agree to the terms and conditions stated above"
-2. Click **"Review + create"**
-3. Review your settings
-4. Click **"Create"**
+1. Zaznacz "Akceptuję warunki i zasady wymienione powyżej"
+2. Kliknij **"Review + create"**
+3. Przejrzyj swoje ustawienia
+4. Kliknij **"Create"**
 
-*[Screenshot placeholder: Review and create screen]*
+*[Placeholder zrzutu ekranu: Ekran przeglądu i tworzenia]*
 
-### Step 5: Wait for Deployment
+### Krok 5: Poczekaj na Wdrożenie
 
-The deployment typically takes 3-5 minutes. You'll see a progress screen.
+Wdrożenie zazwyczaj trwa 3-5 minut. Zobaczysz ekran postępu.
 
-*[Screenshot placeholder: Deployment in progress]*
+*[Placeholder zrzutu ekranu: Wdrożenie w toku]*
 
-### Step 6: Deployment Complete
+### Krok 6: Wdrożenie Zakończone
 
-Once finished, you'll see a success message with deployment outputs.
+Po zakończeniu zobaczysz komunikat o sukcesie z wynikami wdrożenia.
 
-*[Screenshot placeholder: Deployment complete with outputs]*
+*[Placeholder zrzutu ekranu: Wdrożenie zakończone z rezultatami]*
 
-## 📥 Download Publish Profile
+## 📥 Pobierz Profil Publikacji
 
-After deployment completes, you need to download the publish profile to send to the developer:
+Po zakończeniu wdrożenia musisz pobrać profil publikacji, aby wysłać go do developera:
 
-1. Go to **Azure Portal** → **App Services**
-2. Find and click on your deployed app (e.g., `taxassistant-abc123`)
-3. In the **Overview** section, click **"Download publish profile"**
-4. Save the `.pubxml` file
+1. Przejdź do **Azure Portal** → **App Services**
+2. Znajdź i kliknij na swoją wdrożoną aplikację (np. `taxassistant-abc123`)
+3. W sekcji **Overview**, kliknij **"Download publish profile"**
+4. Zapisz plik `.pubxml`
 
-*[Screenshot placeholder: App Service overview with download button highlighted]*
+*[Placeholder zrzutu ekranu: Przegląd App Service z podświetlonym przyciskiem pobierania]*
 
-## 📧 Send to Developer
+## 📧 Wyślij do Developera
 
-**⚠️ Important: Handle securely!**
+**⚠️ Ważne: Obsługuj bezpiecznie!**
 
-The publish profile contains deployment credentials. Please:
+Profil publikacji zawiera dane uwierzytelniające do wdrożenia. Proszę:
 
-1. **Encrypt the file** or use a secure file sharing service
-2. **Send via secure method** (encrypted email, password-protected zip, etc.)
-3. **Include this information:**
-   - Resource Group name
-   - Web App name
-   - Any special requirements
+1. **Zaszyfruj plik** lub użyj bezpiecznej usługi udostępniania plików
+2. **Wyślij bezpieczną metodą** (zaszyfrowany email, zip z hasłem, itp.)
+3. **Dołącz te informacje:**
+   - Nazwa Resource Group
+   - Nazwa Web App
+   - Wszelkie specjalne wymagania
 
-### Email Template
+### Szablon Email
 ```
-Subject: TaxAssistantApp Deployment - Publish Profile
+Temat: TaxAssistantApp Wdrożenie - Profil Publikacji
 
-Hi [Developer],
+Cześć [Developer],
 
-I've successfully deployed the TaxAssistantApp infrastructure to Azure.
+Pomyślnie wdrożyłem infrastrukturę TaxAssistantApp na Azure.
 
-Deployment Details:
-- Resource Group: [your-resource-group-name]
-- Web App Name: [your-web-app-name]
-- App URL: [your-app-url]
+Szczegóły Wdrożenia:
+- Resource Group: [nazwa-twojej-grupy-zasobów]
+- Web App Name: [nazwa-twojej-aplikacji]
+- App URL: [url-twojej-aplikacji]
 
-Please find the publish profile attached (encrypted/password-protected).
-Password: [if applicable]
+W załączniku znajdziesz profil publikacji (zaszyfrowany/zabezpieczony hasłem).
+Hasło: [jeśli dotyczy]
 
-The infrastructure is ready for application deployment.
+Infrastruktura jest gotowa do wdrożenia aplikacji.
 
-Best regards,
-[Your name]
+Pozdrawiam,
+[Twoje imię]
 ```
 
-## 🔧 Developer Instructions
+## 🔧 Instrukcje dla Developera
 
-For the developer deploying the application:
+Dla developera wdrażającego aplikację:
 
-1. **Extract** the publish profile file
-2. **Build** the application: `dotnet publish -c Release -o ./publish`
-3. **Deploy** using Azure CLI:
+1. **Wyodrębnij** plik profilu publikacji
+2. **Zbuduj** aplikację: `dotnet publish -c Release -o ./publish`
+3. **Wdróż** używając Azure CLI:
    ```bash
    az webapp deploy \
-     --resource-group [resource-group-name] \
-     --name [web-app-name] \
+     --resource-group [nazwa-grupy-zasobów] \
+     --name [nazwa-aplikacji] \
      --src-path ./publish \
      --type zip
    ```
 
-## 🌐 Access Your Application
+## 🌐 Dostęp do Twojej Aplikacji
 
-After the developer deploys the code, your application will be available at:
+Po wdrożeniu kodu przez developera, twoja aplikacja będzie dostępna pod adresem:
 ```
-https://[your-web-app-name].azurewebsites.net
+https://[nazwa-twojej-aplikacji].azurewebsites.net
 ```
 
-## ❓ Troubleshooting
+## ❓ Rozwiązywanie Problemów
 
-### Common Issues
+### Częste Problemy
 
-**Q: Deployment fails with "Key Vault name not available"**
-A: Key Vault names must be globally unique. Try a different name or let the system generate one.
+**P: Wdrożenie kończy się niepowodzeniem z "Key Vault name not available"**
+O: Nazwy Key Vault muszą być globalnie unikalne. Spróbuj innej nazwy lub pozwól systemowi wygenerować jedną.
 
-**Q: Can't download publish profile**
-A: F1 (Free) tier has limited publish options. You can still deploy using Visual Studio Code with Azure extension or Azure CLI with deployment center.
+**P: Nie mogę pobrać profilu publikacji**
+O: Warstwa F1 (darmowa) ma ograniczone opcje publikacji. Nadal możesz wdrażać używając Visual Studio Code z rozszerzeniem Azure lub Azure CLI z centrum wdrożenia.
 
-**Q: App shows error after deployment**
-A: The infrastructure is created, but the application code needs to be deployed by the developer.
+**P: Aplikacja pokazuje błąd po wdrożeniu**
+O: Infrastruktura została utworzona, ale kod aplikacji musi zostać wdrożony przez developera.
 
-**Q: API keys not working**
-A: Double-check that you've entered the correct NSA API keys during deployment.
+**P: Klucze API nie działają**
+O: Sprawdź dwukrotnie, czy wprowadziłeś poprawne klucze API NSA podczas wdrożenia.
 
-### Getting Help
+### Uzyskiwanie Pomocy
 
-If you encounter issues:
+Jeśli napotkasz problemy:
 
-1. Check the Azure Portal → Resource Group → Deployments for error details
-2. Contact your developer with the error message
-3. Ensure all required parameters were filled correctly
+1. Sprawdź Azure Portal → Resource Group → Deployments dla szczegółów błędu
+2. Skontaktuj się ze swoim developerem z komunikatem błędu
+3. Upewnij się, że wszystkie wymagane parametry zostały wypełnione poprawnie
 
-## 🔒 Security Notes
+## 🔒 Notatki Bezpieczeństwa
 
-- API keys are stored securely in Azure Key Vault
-- The application uses Managed Identity to access secrets
-- All connections use HTTPS
-- Publish profile contains temporary deployment credentials
+- Klucze API są bezpiecznie przechowywane w Azure Key Vault
+- Aplikacja używa Managed Identity do dostępu do sekretów
+- Wszystkie połączenia używają HTTPS
+- Profil publikacji zawiera tymczasowe dane uwierzytelniające wdrożenia
 
-## 💰 Cost Estimation
+## 💰 Szacowanie Kosztów
 
-Estimated monthly cost for F1 plan in Poland Central:
-- **App Service Plan (F1)**: FREE (with limitations)
-- **Key Vault**: ~€0.50/month (for secret operations)
-- **Total**: ~€0.50/month
+Szacowany miesięczny koszt dla planu F1 w Polsce Centralnej:
+- **App Service Plan (F1)**: DARMOWY (z ograniczeniami)
+- **Key Vault**: ~2 zł/miesiąc (za operacje na sekretach)
+- **Razem**: ~2 zł/miesiąc
 
-*F1 limitations: 60 minutes compute time per day, 1GB disk space, no custom domains*
+*Ograniczenia F1: 60 minut czasu obliczeniowego dziennie, 1GB miejsca na dysku, brak domen niestandardowych*
 
-*Note: Costs may vary by region and usage. Check Azure pricing calculator for accurate estimates.*
+*Uwaga: Koszty mogą się różnić w zależności od regionu i użycia. Sprawdź kalkulator cen Azure dla dokładnych szacunków.*
 
 ---
 
-## 📞 Support
+## 📞 Wsparcie
 
-For technical support or questions about this deployment process, please contact your development team.
+W przypadku wsparcia technicznego lub pytań dotyczących tego procesu wdrożenia, skontaktuj się ze swoim zespołem deweloperskim.
 
-**Happy deploying!** 🎉
+**Miłego wdrażania!** 🎉
