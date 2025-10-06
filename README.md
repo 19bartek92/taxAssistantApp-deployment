@@ -1,6 +1,8 @@
 # 🚀 TaxAssistantApp - Uproszczone Wdrożenie
 
-Wdróż aplikację TaxAssistantApp w swojej subskrypcji Azure za pomocą prostego procesu jednym kliknięciem. To wdrożenie tworzy tylko niezbędną infrastrukturę (App Service + Key Vault) bez skomplikowanych integracji.
+Proces wdrożenia TaxAssistantApp w Azure.
+
+[//]: # (Wdróż aplikację TaxAssistantApp w swojej subskrypcji Azure za pomocą prostego procesu jednym kliknięciem. To wdrożenie tworzy tylko niezbędną infrastrukturę &#40;App Service + Key Vault&#41; bez skomplikowanych integracji.)
 
 ## ✨ Co zostanie wdrożone
 
@@ -22,32 +24,52 @@ Przed wdrożeniem będziesz potrzebować:
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2F19bartek92%2FtaxAssistantApp-deployment%2Fmain%2Fazuredeploy.json)
 
-*[Placeholder zrzutu ekranu: Przycisk Deploy to Azure]*
+[//]: # ()
+[//]: # (*[Placeholder zrzutu ekranu: Przycisk Deploy to Azure]*)
 
 ### Krok 2: Zaloguj się do Azure
 
 Zostaniesz przekierowany do Azure Portal, aby uwierzytelnić się swoim kontem Azure.
 
-*[Placeholder zrzutu ekranu: Ekran logowania Azure]*
+![azure-login.png](docs/images/azure-login.png)
 
 ### Krok 3: Skonfiguruj Parametry Wdrożenia
 
 Wypełnij formularz wdrożenia swoimi ustawieniami:
 
-| Parametr | Opis | Przykład | Wymagane |
-|----------|-----|----------|----------|
-| **Subscription** | Twoja subskrypcja Azure | `Moja Subskrypcja Firmowa` | ✅ |
-| **Resource Group** | Utwórz nową lub użyj istniejącej | `rg-taxassistant` | ✅ |
-| **Region** | Region Azure do wdrożenia | `Poland Central` | ✅ |
-| **App Service Plan Name** | Nazwa planu hostingowego | `taxassistant-plan` | ✅ |
-| **Web App Name** | Nazwa twojej aplikacji | `taxassistant-mojafirma` | ✅ |
-| **SKU** | Rozmiar planu hostingowego | `F1` (warstwa darmowa) | ✅ |
-| **NSA Search API Key** | Twój klucz API do wyszukiwania | `twoj-klucz-search-tutaj` | ✅ |
-| **NSA Detail API Key** | Twój klucz API do szczegółów | `twoj-klucz-detail-tutaj` | ✅ |
-| **Key Vault Name** | Nazwa dla bezpiecznego magazynu | `kv-taxassistant` | ✅ |
+| Parametr | Opis | Wartość Domyślna / Opcje | Przykład | Wymagane |
+|----------|-----|-------------------------|----------|----------|
+| **Subscription** | Twoja subskrypcja Azure | *(wybierz z listy)* | `Moja Subskrypcja Firmowa` | ✅ |
+| **Resource Group** | Utwórz nową lub użyj istniejącej | *(utwórz nową)* | `rg-taxassistant-prod` | ✅ |
+| **Region** | Region Azure do wdrożenia | **Poland Central** *(domyślna)*<br/>*Inne: West Europe, North Europe* | `Poland Central` | ✅ |
+| **App Service Plan Name** | Nazwa planu hostingowego | **taxassistant-plan** *(domyślna)* | `plan-taxassistant-firma` | ✅ |
+| **Web App Name** | Nazwa twojej aplikacji<br/>*⚠️ Musi być globalnie unikalna* | **taxassistant-{unikalnyCiąg}** *(auto)*<br/>*Tylko litery, cyfry, myślniki* | `taxassistant-abc123`<br/>`taxassistant-mojafirma` | ✅ |
+| **SKU** | Rozmiar planu hostingowego | **F1** *(darmowa, domyślna)*<br/>*Opcje: F1, B1, B2, S1, S2, P1v3, P2v3* | `F1` dla testów<br/>`S1` dla produkcji | ✅ |
+| **NSA Search API Key** | Twój klucz API do wyszukiwania<br/>*🔒 Będzie bezpiecznie przechowany* | *(brak domyślnej - wprowadź swój)* | `abcd1234-ef56-7890-...` | ✅ |
+| **NSA Detail API Key** | Twój klucz API do szczegółów<br/>*🔒 Będzie bezpiecznie przechowany* | *(brak domyślnej - wprowadź swój)* | `wxyz9876-ab12-3456-...` | ✅ |
+| **Key Vault Name** | Nazwa dla bezpiecznego magazynu<br/>*⚠️ Musi być globalnie unikalna* | **kv-{unikalnyCiąg}** *(auto)*<br/>*3-24 znaki, tylko litery i cyfry* | `kv-abc123`<br/>`kv-taxassistant-prod` | ✅ |
+| **Enable Key Vault Recovery** | Odzyskiwanie usuniętego Key Vault | **false** *(domyślna)*<br/>*true - jeśli wcześniej usunąłeś KV* | `false` | ❌ |
 
-*[Placeholder zrzutu ekranu: Formularz wdrożenia z wypełnionymi parametrami]*
+#### 💡 Porady dotyczące wypełniania:
 
+**🎯 Nazwy unikalne (Web App, Key Vault):**
+- System automatycznie wygeneruje unikalne ciągi
+- Możesz zmienić na własne, ale sprawdź dostępność
+- Używaj tylko: litery, cyfry, myślniki (bez spacji, polskich znaków)
+
+**💰 Wybór SKU:**
+- **F1 (Free)** - Do testów, ograniczenia: 60min/dzień, 1GB
+- **B1/B2 (Basic)** - Małe aplikacje produkcyjne, ~€10-20/mies
+- **S1/S2 (Standard)** - Średnie aplikacje, ~€55-110/mies
+- **P1v3+ (Premium)** - Duże aplikacje, zaawansowane funkcje
+
+**🔑 Klucze API NSA:**
+- Upewnij się, że masz poprawne klucze przed wdrożeniem
+- Klucze będą bezpiecznie zaszyfrowane w Key Vault
+- Nie będą widoczne w logach ani interfejsie Azure
+
+[//]: # (*[Placeholder zrzutu ekranu: Formularz wdrożenia z wypełnionymi parametrami]*)
+![deployment-form.png](docs/images/deployment-form.png)
 ### Krok 4: Przejrzyj i Utwórz
 
 1. Zaznacz "Akceptuję warunki i zasady wymienione powyżej"
@@ -55,19 +77,25 @@ Wypełnij formularz wdrożenia swoimi ustawieniami:
 3. Przejrzyj swoje ustawienia
 4. Kliknij **"Create"**
 
-*[Placeholder zrzutu ekranu: Ekran przeglądu i tworzenia]*
+[//]: # (*[Placeholder zrzutu ekranu: Ekran przeglądu i tworzenia]*)
+![review-create.png](docs/images/review-create.png)
 
 ### Krok 5: Poczekaj na Wdrożenie
 
 Wdrożenie zazwyczaj trwa 3-5 minut. Zobaczysz ekran postępu.
 
-*[Placeholder zrzutu ekranu: Wdrożenie w toku]*
+![deployment-progress.png](docs/images/deployment-progress.png)
+
+
+[//]: # (*[Placeholder zrzutu ekranu: Wdrożenie w toku]*)
 
 ### Krok 6: Wdrożenie Zakończone
 
 Po zakończeniu zobaczysz komunikat o sukcesie z wynikami wdrożenia.
 
-*[Placeholder zrzutu ekranu: Wdrożenie zakończone z rezultatami]*
+![deployment-complete.png](docs/images/deployment-complete.png)
+
+[//]: # (*[Placeholder zrzutu ekranu: Wdrożenie zakończone z rezultatami]*)
 
 ## 📥 Pobierz Profil Publikacji
 
@@ -78,57 +106,11 @@ Po zakończeniu wdrożenia musisz pobrać profil publikacji, aby wysłać go do 
 3. W sekcji **Overview**, kliknij **"Download publish profile"**
 4. Zapisz plik `.pubxml`
 
-*[Placeholder zrzutu ekranu: Przegląd App Service z podświetlonym przyciskiem pobierania]*
+![app-service-overview.png](docs/images/app-service-overview.png)
 
-## 📧 Wyślij do Developera
+[//]: # (*[Placeholder zrzutu ekranu: Przegląd App Service z podświetlonym przyciskiem pobierania]*)
 
-**⚠️ Ważne: Obsługuj bezpiecznie!**
 
-Profil publikacji zawiera dane uwierzytelniające do wdrożenia. Proszę:
-
-1. **Zaszyfruj plik** lub użyj bezpiecznej usługi udostępniania plików
-2. **Wyślij bezpieczną metodą** (zaszyfrowany email, zip z hasłem, itp.)
-3. **Dołącz te informacje:**
-   - Nazwa Resource Group
-   - Nazwa Web App
-   - Wszelkie specjalne wymagania
-
-### Szablon Email
-```
-Temat: TaxAssistantApp Wdrożenie - Profil Publikacji
-
-Cześć [Developer],
-
-Pomyślnie wdrożyłem infrastrukturę TaxAssistantApp na Azure.
-
-Szczegóły Wdrożenia:
-- Resource Group: [nazwa-twojej-grupy-zasobów]
-- Web App Name: [nazwa-twojej-aplikacji]
-- App URL: [url-twojej-aplikacji]
-
-W załączniku znajdziesz profil publikacji (zaszyfrowany/zabezpieczony hasłem).
-Hasło: [jeśli dotyczy]
-
-Infrastruktura jest gotowa do wdrożenia aplikacji.
-
-Pozdrawiam,
-[Twoje imię]
-```
-
-## 🔧 Instrukcje dla Developera
-
-Dla developera wdrażającego aplikację:
-
-1. **Wyodrębnij** plik profilu publikacji
-2. **Zbuduj** aplikację: `dotnet publish -c Release -o ./publish`
-3. **Wdróż** używając Azure CLI:
-   ```bash
-   az webapp deploy \
-     --resource-group [nazwa-grupy-zasobów] \
-     --name [nazwa-aplikacji] \
-     --src-path ./publish \
-     --type zip
-   ```
 
 ## 🌐 Dostęp do Twojej Aplikacji
 
@@ -144,8 +126,9 @@ https://[nazwa-twojej-aplikacji].azurewebsites.net
 **P: Wdrożenie kończy się niepowodzeniem z "Key Vault name not available"**
 O: Nazwy Key Vault muszą być globalnie unikalne. Spróbuj innej nazwy lub pozwól systemowi wygenerować jedną.
 
-**P: Nie mogę pobrać profilu publikacji**
-O: Warstwa F1 (darmowa) ma ograniczone opcje publikacji. Nadal możesz wdrażać używając Visual Studio Code z rozszerzeniem Azure lub Azure CLI z centrum wdrożenia.
+[//]: # (**P: Nie mogę pobrać profilu publikacji**)
+
+[//]: # (O: Warstwa F1 &#40;darmowa&#41; ma ograniczone opcje publikacji. Nadal możesz wdrażać używając Visual Studio Code z rozszerzeniem Azure lub Azure CLI z centrum wdrożenia.)
 
 **P: Aplikacja pokazuje błąd po wdrożeniu**
 O: Infrastruktura została utworzona, ale kod aplikacji musi zostać wdrożony przez developera.
@@ -153,13 +136,17 @@ O: Infrastruktura została utworzona, ale kod aplikacji musi zostać wdrożony p
 **P: Klucze API nie działają**
 O: Sprawdź dwukrotnie, czy wprowadziłeś poprawne klucze API NSA podczas wdrożenia.
 
-### Uzyskiwanie Pomocy
+[//]: # (### Uzyskiwanie Pomocy)
 
-Jeśli napotkasz problemy:
+[//]: # ()
+[//]: # (Jeśli napotkasz problemy:)
 
-1. Sprawdź Azure Portal → Resource Group → Deployments dla szczegółów błędu
-2. Skontaktuj się ze swoim developerem z komunikatem błędu
-3. Upewnij się, że wszystkie wymagane parametry zostały wypełnione poprawnie
+[//]: # ()
+[//]: # (1. Sprawdź Azure Portal → Resource Group → Deployments dla szczegółów błędu)
+
+[//]: # (2. Skontaktuj się ze swoim developerem z komunikatem błędu)
+
+[//]: # (3. Upewnij się, że wszystkie wymagane parametry zostały wypełnione poprawnie)
 
 ## 🔒 Notatki Bezpieczeństwa
 
@@ -181,8 +168,9 @@ Szacowany miesięczny koszt dla planu F1 w Polsce Centralnej:
 
 ---
 
-## 📞 Wsparcie
+[//]: # (## 📞 Wsparcie)
 
-W przypadku wsparcia technicznego lub pytań dotyczących tego procesu wdrożenia, skontaktuj się ze swoim zespołem deweloperskim.
+[//]: # ()
+[//]: # (W przypadku wsparcia technicznego lub pytań dotyczących tego procesu wdrożenia, skontaktuj się ze swoim zespołem deweloperskim.)
 
 **Miłego wdrażania!** 🎉
