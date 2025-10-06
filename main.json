@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.38.5.1644",
-      "templateHash": "15444600444864788398"
+      "templateHash": "14975685138273397333"
     }
   },
   "parameters": {
@@ -83,9 +83,9 @@
         "name": "[parameters('sku')]",
         "tier": "[if(equals(parameters('sku'), 'F1'), 'Free', if(equals(parameters('sku'), 'B1'), 'Basic', if(equals(parameters('sku'), 'B2'), 'Basic', if(equals(parameters('sku'), 'S1'), 'Standard', if(equals(parameters('sku'), 'S2'), 'Standard', 'PremiumV3')))))]"
       },
-      "kind": "app",
+      "kind": "linux",
       "properties": {
-        "reserved": false
+        "reserved": true
       }
     },
     {
@@ -109,18 +109,18 @@
       "apiVersion": "2023-01-01",
       "name": "[parameters('webAppName')]",
       "location": "[parameters('location')]",
-      "kind": "app",
+      "kind": "app,linux",
       "identity": {
         "type": "SystemAssigned"
       },
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
-          "netFrameworkVersion": "v8.0",
+          "linuxFxVersion": "DOTNETCORE|8.0",
           "metadata": [
             {
               "name": "CURRENT_STACK",
-              "value": "dotnet"
+              "value": "dotnetcore"
             }
           ],
           "appSettings": [

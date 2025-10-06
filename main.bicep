@@ -41,9 +41,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2023-01-01' = {
     name: sku
     tier: sku == 'F1' ? 'Free' : sku == 'B1' ? 'Basic' : sku == 'B2' ? 'Basic' : sku == 'S1' ? 'Standard' : sku == 'S2' ? 'Standard' : 'PremiumV3'
   }
-  kind: 'app'
+  kind: 'linux'
   properties: {
-    reserved: false
+    reserved: true
   }
 }
 
@@ -67,18 +67,18 @@ resource keyVault 'Microsoft.KeyVault/vaults@2023-07-01' = {
 resource webApp 'Microsoft.Web/sites@2023-01-01' = {
   name: webAppName
   location: location
-  kind: 'app'
+  kind: 'app,linux'
   identity: {
     type: 'SystemAssigned'
   }
   properties: {
     serverFarmId: appServicePlan.id
     siteConfig: {
-      netFrameworkVersion: 'v8.0'
+      linuxFxVersion: 'DOTNETCORE|8.0'
       metadata: [
         {
           name: 'CURRENT_STACK'
-          value: 'dotnet'
+          value: 'dotnetcore'
         }
       ]
       appSettings: [
